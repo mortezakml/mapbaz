@@ -1,0 +1,30 @@
+body{
+    background: url('../image/back-login.jpg');
+    background-size: cover;
+}
+.loading{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(../image/Preloader_2.gif) center no-repeat #fff;
+}
+
+
+.loading-box{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(../image/Preloader_2.gif) center no-repeat #fff;
+    opacity: 0.7;
+    display: none;
+}
+
+.mb-5{
+    margin-bottom: 5px;
+}

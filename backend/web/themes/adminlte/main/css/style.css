@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'BTraffic';
+    src: url('../../fonts/BTraffic.eot');
+    src: url('../../fonts/BTraffic.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/BTraffic.woff') format('woff'),
+         url('../../fonts/BTraffic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}   
+*{
+    padding: 0px;
+    margin: 0px;
+    
+}
+body{
+    direction: rtl;
+    background: url('../image/bg.jpg');
+    font-family: 'BTraffic';
+}
+a{
+    text-decoration: none;
+}
+#header{
+    margin-top: 50px;
+}
+.sidebar{
+    margin: 5px 0px 5px 0px;
+}
+.sidebar-white{
+    background: white;
+}
+.sidebar-content{
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+.sidebar .title{
+    background: #aaa;
+    padding: 15px 10px 15px 5px;
+}
+.listbox{
+	border-radius: 0px 10px 0px 10px;
+	border: 1px solid #ccc;
+	background: white;
+	padding: 10px;
+}
+.listbox .listbox-content{
+   padding: 15px 5px 5px 5px; 
+}
+.listbox .title{
+    padding: 5px;
+    border-radius: 5px;
+    background: #7aba7b;
+}
+
+
+
+.footer{
+    height: 200px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 0px 10px 0px 10px;
+    width: 100%;
+    margin: 5px 0px 15px 0px;
+}
+
+ul > li:hover > ul{
+    display: block;
+    
+}
+
+ul > li > ul{
+    display: none;
+    margin-right: 10px;
+    background: #f8efc0;
+}
