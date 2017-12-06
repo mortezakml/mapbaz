@@ -27,7 +27,7 @@ use yii\widgets\Pjax;
                             <li>تبلیغ تلگرامی</li>
                         </ul>
                     </p>
-                    <p>برای شروع درج تبلیغ شروع کنید</p>
+                    <p>برای درج تبلیغ شروع کنید</p>
                     <?= Html::a('<i class="fa fa-plus"></i> ثبت تبلیغ جدید', Url::to(['new-ads']), [
                          'class' => 'btn btn-sm btn-success btn-block',
                          'onclick' => "showModal(this); return false;",
@@ -56,22 +56,33 @@ use yii\widgets\Pjax;
                     <div class="panel-heading">
                         آمار و اطلاعات
                     </div>
-                    <div class="panel-body">
-                        <img src="themes/adminlte/img/info.jpg" class="pull-left" style="max-width: 40%; opacity: 0.5">
-                        <p><i class="fa fa-star" style="color:#6f25b4 "></i> تعداد تبلیغ های ثبت شده: <?= $adsCount; ?></p>
+                    <div class="panel-body animated bounceInUp">
+                        <img src="themes/adminlte/img/info.jpg" class="pull-left" style="max-width: 38%; opacity: 0.5">
+                        
+                       
+                        
+                       <p><i class="fa fa-star" style="color:#6f25b4 "></i> تعداد تبلیغ های ثبت شده: <?= $adsCount; ?></p>
                         <p><i class="fa fa-star" style="color:#0000ff "></i> پربازدید ترین تبلیغ شما: <a href="#">حباب افروز</a></p>
+ 
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4" style="margin-bottom: 10px;">
-                <div style="background: url('themes/adminlte/img/alert-ads.png');background-size: cover;background-position: bottom;padding: 10px;border-radius: 5px;height: 200px;border: 1px solid #6f25b4;" class="pull-right animated bounceInDown">
+            <div class="col-lg-4 col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        تبلیغ جدید
+                    </div>
+                    <div class="panel-body">
+                         <div style="margin-left: 10px;background: url('themes/adminlte/img/alert-ads.png');background-size: cover;background-position: bottom;padding: 10px;border-radius: 5px;height: 200px;border: 1px solid #6f25b4;" class="pull-right animated bounceInDown">
 
-                        برای در ج تبلیغ شروع کنید
-                        <?= Html::a('<i class="fa fa-plus"></i> ثبت تبلیغ جدید', Url::to(['new-ads']), [
-                            'class' => 'btn btn-sm btn-success',
-                            'onclick' => "showModal(this); return false;",
-                            'style' => 'margin:50px;'
-                        ]); ?>
+                                برای در ج تبلیغ شروع کنید
+                                <?= Html::a('<i class="fa fa-plus"></i> ثبت تبلیغ جدید', Url::to(['new-ads']), [
+                                    'class' => 'btn btn-sm btn-success',
+                                    'onclick' => "showModal(this); return false;",
+                                    'style' => 'margin:50px;'
+                                ]); ?>
+                        </div>
+                    </div>
                 </div>
             </div>
 
