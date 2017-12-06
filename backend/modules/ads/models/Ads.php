@@ -3,7 +3,7 @@
 namespace backend\modules\ads\models;
 
 use Yii;
-use backend\modules\account\models\User;
+use common\modules\account\models\User;
 
 /**
  * This is the model class for table "ads".

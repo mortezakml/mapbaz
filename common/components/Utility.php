@@ -125,7 +125,7 @@ class Utility extends Component{
         <ul class="sidebar-menu">
             <li class="header">منوی اصلی</li>
             <li class="treeview">
-                <a href="<?= yii\helpers\Url::to(['admin/dashboard']); ?>">
+                <a href="<?= yii\helpers\Url::to(['/dashboard']); ?>">
                 <i class="fa fa-dashboard"></i> <span>داشبورد</span>
               </a>
             </li>
