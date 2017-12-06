@@ -15,15 +15,24 @@ use yii\widgets\Pjax;
                 <i class="fa fa-angle-left"></i> عدم وجود تبلیغ
             </div>
             <div class="panel-body">
-                <div style="padding: 100px 100px 0px 0px;color: blueviolet;font-family: tahoma;font-size: xx-large;background: url('themes/adminlte/img/alert-ads.png');background-size: cover; height: 400px; opacity: 1; width:500px;" class="pull-left animated bounceIn">
+                <div class="raw">
+                <div class="col-md-4 col-md-offset-4">
+                <div style="padding: 40px 20px 0px 0px;color: blueviolet;font-family: tahoma;background: url('themes/adminlte/img/alert-ads.png');background-size: cover; height: 200px; opacity: 1; width:200px;border-radius: 5px;" class="animated bounceInDown">
                     تبلیغی وجود ندارد
                 </div>
+                </div>
+                <div class="col-md-4">
+                    <div style="background:#eee;padding: 10px;border-radius: 5px;height: 200px;border: 1px solid #6f25b4;" class="animated bounceInDown">
                 <p>شما در حال حاضر هیچ تبلیغی نداردید</p>
                 برای در ج تبلیغ شروع کنید
                 <?= Html::a('<i class="fa fa-plus"></i> ثبت تبلیغ جدید', Url::to(['new-ads']), [
                     'class' => 'btn btn-sm btn-success',
                     'onclick' => "showModal(this); return false;",
+                    'style' => 'margin:50px;'
                 ]); ?>
+                </div>
+                </div>
+                </div>
                 
             </div>
         </div>
