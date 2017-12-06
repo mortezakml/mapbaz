@@ -1,8 +1,17 @@
-<?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+<!DOCTYPE html>
+<html>
+<body>
 
+<p>Click the button to display a confirm box.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<script>
+function myFunction() {
+    confirm("Press a button!");
+}
+</script>
+
+</body>
+</html>
