@@ -8,36 +8,76 @@ use yii\widgets\Pjax;
 ?>
 
 <div class="row">
-    <div class="col-lg-8 col-md-8 col-lg-offset-4 col-md-offset-4">
+    
          <?php if(empty($adsModel)){ ?>
+        <div class="col-lg-8 col-md-8 col-lg-offset-4 col-md-offset-4">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-angle-left"></i> عدم وجود تبلیغ
             </div>
             <div class="panel-body">
-                <div class="raw">
-                <div class="col-md-4 col-md-offset-4">
-                <div style="padding: 40px 20px 0px 0px;color: blueviolet;font-family: tahoma;background: url('themes/adminlte/img/alert-ads.png');background-size: cover; height: 200px; opacity: 1; width:200px;border-radius: 5px;" class="animated bounceInDown">
-                    تبلیغی وجود ندارد
+                <div class="col-lg-6 col-md-6">
+                    <p><i class="fa fa-star"></i> کاربر گرامی شما در حال حاضر هیچ تبلیغی ندارید</p>
+                    <p><i class="fa fa-angle-left"></i> شما در نسخه فعلی مپ باز فقط می توانید سه تبلیغ درج کنید</p>
+                    <p><i class="fa fa-image"></i>&nbsp;
+                        تبلیغ های شما در مپ باز به سه نوع دسته بندی می شوند
+                        <ul >
+                            <li>تبلیغ سایتی</li>
+                            <li>تبلیغ محصولی</li>
+                            <li>تبلیغ تلگرامی</li>
+                        </ul>
+                    </p>
+                    <p>برای شروع درج تبلیغ شروع کنید</p>
+                    <?= Html::a('<i class="fa fa-plus"></i> ثبت تبلیغ جدید', Url::to(['new-ads']), [
+                         'class' => 'btn btn-sm btn-success btn-block',
+                         'onclick' => "showModal(this); return false;",
+                     ]); ?>
                 </div>
-                </div>
-                <div class="col-md-4">
-                    <div style="background:#eee;padding: 10px;border-radius: 5px;height: 200px;border: 1px solid #6f25b4;" class="animated bounceInDown">
-                <p>شما در حال حاضر هیچ تبلیغی نداردید</p>
-                برای در ج تبلیغ شروع کنید
-                <?= Html::a('<i class="fa fa-plus"></i> ثبت تبلیغ جدید', Url::to(['new-ads']), [
-                    'class' => 'btn btn-sm btn-success',
-                    'onclick' => "showModal(this); return false;",
-                    'style' => 'margin:50px;'
-                ]); ?>
-                </div>
-                </div>
+                <div class="col-lg-6 col-md-6">
+                <div style="background: url('themes/adminlte/img/alert-ads.png');background-size: cover;color:#fff;background-position: bottom;padding: 10px;border-radius: 5px;height: 200px;border: 1px solid #6f25b4;" class="pull-right animated bounceInDown">
+
+                     برای در ج تبلیغ شروع کنید
+                     <?= Html::a('<i class="fa fa-plus"></i> ثبت تبلیغ جدید', Url::to(['new-ads']), [
+                         'class' => 'btn btn-sm btn-success',
+                         'onclick' => "showModal(this); return false;",
+                         'style' => 'margin:50px;'
+                     ]); ?>
+                 </div> 
                 </div>
                 
             </div>
         </div>
-        <?php } ?>
-        <?php foreach ($adsModel as $ads):?>
+        </div>
+        <?php 
+        }
+        else {?>
+            <div class="col-lg-8 col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        آمار و اطلاعات
+                    </div>
+                    <div class="panel-body">
+                        <img src="themes/adminlte/img/info.jpg" class="pull-left" style="max-width: 40%; opacity: 0.5">
+                        <p><i class="fa fa-star" style="color:#6f25b4 "></i> تعداد تبلیغ های ثبت شده: <?= $adsCount; ?></p>
+                        <p><i class="fa fa-star" style="color:#0000ff "></i> پربازدید ترین تبلیغ شما: <a href="#">حباب افروز</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4" style="margin-bottom: 10px;">
+                <div style="background: url('themes/adminlte/img/alert-ads.png');background-size: cover;background-position: bottom;padding: 10px;border-radius: 5px;height: 200px;border: 1px solid #6f25b4;" class="pull-right animated bounceInDown">
+
+                        برای در ج تبلیغ شروع کنید
+                        <?= Html::a('<i class="fa fa-plus"></i> ثبت تبلیغ جدید', Url::to(['new-ads']), [
+                            'class' => 'btn btn-sm btn-success',
+                            'onclick' => "showModal(this); return false;",
+                            'style' => 'margin:50px;'
+                        ]); ?>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12">
+                <div class="row">
+                <?php foreach ($adsModel as $ads):?>
                     <div class="col-lg-4 col-md-3">
                     <?php  ?>
                     <?= Card::widget([
@@ -55,7 +95,9 @@ use yii\widgets\Pjax;
                     ]); ?>
                     </div>
                 <?php endforeach; ?>
-    </div>
+                </div>
+        </div>
+        <?php } ?>
 </div>
 <?php 
 Modal::begin(['id' => 'my-ads-modal']);

@@ -21,9 +21,10 @@ class MyAdsController extends \yii\web\Controller{
     public function actionIndex()
     {
         $adsModel = Ads::find()->myAds()->all();
-        
+        $adsCount = Ads::find()->myAds()->count();
         return $this->render('my_ads', [
             'adsModel' => $adsModel,
+            'adsCount' => $adsCount,
         ]);
     }
     
@@ -48,7 +49,7 @@ class MyAdsController extends \yii\web\Controller{
         {
             $model->saveAds();
             
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view-my-ads', 'id' => $model->id]);
         } else {
             return $this->renderAjax('new_ads', [
                 'model' => $model,
