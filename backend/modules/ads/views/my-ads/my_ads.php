@@ -57,7 +57,7 @@ use yii\widgets\Pjax;
                         آمار و اطلاعات
                     </div>
                     <div class="panel-body animated bounceInUp">
-                        <img src="themes/adminlte/img/info.jpg" class="pull-left" style="max-width: 38%; opacity: 0.5">
+                        <img src="themes/adminlte/img/info.jpg" class="pull-left" style="max-width: 38%; opacity: 0.5; border-radius: 5px;">
                         
                        
                         
