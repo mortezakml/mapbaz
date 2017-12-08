@@ -8,6 +8,18 @@ return [
         'account' => [
             'class' => 'common\modules\account\Module',
         ],
+        'social' => [
+            // the module class
+            'class' => 'kartik\social\Module',
+
+
+            // the global settings for the google plugins widget
+            'google' => [
+                'clientId' => '57891274003-jte1dmvarfuk8griju3biqg20hq6eb09.apps.googleusercontent.com',
+            ],
+
+
+        ],
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [

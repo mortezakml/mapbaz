@@ -151,4 +151,10 @@ class UserController extends Controller
             'sendMessageFormModel' => $sendMessageFormModel,
         ]);
     }
+    
+    
+    
+    public function actionLoginWithGoogle() {
+        
+    }
 }

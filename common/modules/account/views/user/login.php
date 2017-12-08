@@ -8,6 +8,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use app\components\ImageSlider;
 use yii\captcha\Captcha;
+use kartik\social\GooglePlugin;
 
 $this->title = 'ورود';
 $this->params['breadcrumbs'][] = $this->title;
@@ -27,7 +28,47 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="form-group">
             <div class="col-lg-offset-2 col-lg-8">
+                <?= GooglePlugin::widget([
+                    'type'=>GooglePlugin::SIGNIN, 
+                    'tag'=>'span', 
+                    'signinOptions'=>['id'=>'signinButton'],
+                    'settings' => [
+                        'callback'=>'signinCallback',
+                        'cookiepolicy' => 'single_host_origin',
+                    ]
+                ]);?>
                 <?= Html::submitButton('ورود', ['class' => 'btn btn-block btn-primary', 'name' => 'login-button', 'id' => 'btn-ani']) ?>
             </div>
         </div>
+<div class="form-group">
+    <div class="col-lg-8 col-lg-offset-2">
+        
+    </div>
+</div>
     <?php ActiveForm::end(); ?>
+
+
+<?php
+$js ="
+/**
+ * The callback client script
+ */
+function signinCallback(authResult) {
+    console.log(authResult);
+    if (authResult['status']['signed_in']) {
+        // Update the app to reflect a signed in user
+        // Hide the sign-in button now that the user is authorized, for example:
+        document.getElementById('signinButton').setAttribute('style', 'display: none');
+        
+    } else {
+        // Update the app to reflect a signed out user
+        // Possible error values:
+        //   'user_signed_out' - User is signed-out
+        //   'access_denied' - User denied access to your app
+        //   'immediate_failed' - Could not automatically log in the user
+        console.log('Sign-in state: ' + authResult['error']);
+    }
+}
+    ";
+$this->registerJs($js, \yii\web\View::POS_END);
+?>
