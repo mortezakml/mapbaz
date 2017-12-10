@@ -29,7 +29,7 @@ class MyAdsController extends \yii\web\Controller{
     }
     
     
-    public function actionViewMyads($aid)
+    public function actionViewMyAds($aid)
     {
         $adsModel = Ads::find()->myAds()->andWhere(['id' => $aid])->one();
         return $this->render('view_myads', [
@@ -49,7 +49,7 @@ class MyAdsController extends \yii\web\Controller{
         {
             $model->saveAds();
             
-            return $this->redirect(['view-my-ads', 'id' => $model->id]);
+            return $this->redirect(['view-my-ads', 'aid' => $model->id]);
         } else {
             return $this->renderAjax('new_ads', [
                 'model' => $model,
