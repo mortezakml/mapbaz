@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'settings' => [
                         'callback'=>'signinCallback',
                         'cookiepolicy' => 'single_host_origin',
+                        'scope'=>'https://www.googleapis.com/auth/userinfo.profile'
                     ]
                 ]);?>
                 <?= Html::submitButton('ورود', ['class' => 'btn btn-block btn-primary', 'name' => 'login-button', 'id' => 'btn-ani']) ?>
