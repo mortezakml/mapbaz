@@ -100,7 +100,7 @@ use yii\widgets\Pjax;
                                 ]);
                             },
                             'view' => function($widget)use($ads){
-                                return Html::a('<i class="fa fa-eye"></i>', Url::to(['view-myads', 'aid' => $ads->id]));
+                                return Html::a('<i class="fa fa-eye"></i>', Url::to(['view-my-ads', 'aid' => $ads->id]));
                             }
                         ]
                     ]); ?>
