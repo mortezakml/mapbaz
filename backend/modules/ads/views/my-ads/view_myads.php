@@ -17,7 +17,7 @@ $this->title = "نمایش جزییات تبلیغ";
                 <!-- /. tools -->
             </div>
             <div class="box-body" style="height: 590px;">
-                <?php Pjax::begin(['id' => 'detail-pjax', 'linkSelector' => '.link-pjax', 'enablePushState' => false]); ?>
+                <?php Pjax::begin(['id' => 'detail-pjax', 'linkSelector' => '.link-pjax', 'enablePushState' => false, 'timeout' => false]); ?>
                 
                 <?php Pjax::end(); ?>
             </div>

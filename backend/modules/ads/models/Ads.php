@@ -11,6 +11,7 @@ use common\modules\account\models\User;
  * @property integer $id
  * @property string $title
  * @property string $description
+ * @property string $url
  * @property string $image
  * @property string $star
  * @property string $rate
@@ -19,6 +20,7 @@ use common\modules\account\models\User;
  * @property string $created_at
  * @property string $updated_at
  * @property integer $user_id
+ * @property integer $type_id
  *
  * @property User $user
  * @property AdsPlan[] $adsPlans
@@ -41,7 +43,7 @@ class Ads extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description'], 'required'],
+            [['title', 'description', 'url', 'type', 'user_id'], 'required'],
             [['description'], 'string'],
             [['status', 'user_id'], 'integer'],
             [['title'], 'string', 'max' => 50],
@@ -63,6 +65,7 @@ class Ads extends \yii\db\ActiveRecord
             'id' => 'شناسه',
             'title' => 'عنوان',
             'description' => 'توضیح',
+            'url' => 'آدرس وب سایت و یا کانال تلگرامی',
             'image' => 'عکس',
             'star' => 'ستاره',
             'rate' => 'رتبه',
@@ -115,6 +118,11 @@ class Ads extends \yii\db\ActiveRecord
         return $this->hasOne(Inout::className(), ['ads_id' => 'id']);
     }
     
+    public function getType()
+    {
+        return $this->hasOne(Type::className(), ['id' => 'type_id']);
+    }
+    
     public function saveAds()
     {
         $this->file = \yii\web\UploadedFile::getInstance($this, "file");
@@ -125,7 +133,21 @@ class Ads extends \yii\db\ActiveRecord
             @$this->file->saveAs('uploads/'.$this->file->getBaseName().'.'.$this->file->getExtension());
         }
         
+        $urlValidator = new \yii\validators\UrlValidator();
+        if($urlValidator->validate($this->url))
+        {
+            $this->type_id = Type::findByName('وب سایت')->id;
+        }
+        else
+        {
+           $this->type_id = Type::findByName('تلگرام')->id;
+           $res = strpos($this->url, '@');
+           if($res === false)
+           {
+               $this->addError("url", "َشناسه تلگرامی باید معتبر باشد");
+               return false;
+           }
+        }
         return $this->save();
-        
     }
 }

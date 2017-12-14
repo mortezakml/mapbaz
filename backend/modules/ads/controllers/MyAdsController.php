@@ -64,12 +64,10 @@ class MyAdsController extends \yii\web\Controller{
         if ($model->load(Yii::$app->request->post())) 
         {
             $model->saveAds();
-            
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->renderAjax('new_ads', [
-                'model' => $model,
-            ]);
         }
+        return $this->renderAjax('new_ads', [
+            'model' => $model,
+        ]);
+        
     }
 }

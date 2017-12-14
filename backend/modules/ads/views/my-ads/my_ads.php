@@ -112,7 +112,7 @@ use yii\widgets\Pjax;
 </div>
 <?php 
 Modal::begin(['id' => 'my-ads-modal']);
-Pjax::begin(['id' => 'ads-pjax']);
+Pjax::begin(['id' => 'ads-pjax', 'enablePushState' => false, 'timeout' => false]);
     $js ="
     function showModal(obj)
     {

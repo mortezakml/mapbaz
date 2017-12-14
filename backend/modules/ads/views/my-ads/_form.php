@@ -8,7 +8,11 @@ use kartik\widgets\FileInput;
 /* @var $model app\modules\ads\models\Ads */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-<?php $form = ActiveForm::begin(); ?>
+<?php $form = ActiveForm::begin([
+    'options' => [
+        'data-pjax' => 1
+    ]
+]); ?>
 <div class="row">
     <div class="col-lg-12 col-md-12">
         <div class="box box-info">
@@ -28,6 +32,8 @@ use kartik\widgets\FileInput;
                 <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
                 <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+                
+                <?= $form->field($model, 'url')->textInput(['style' => 'direction:ltr;']); ?>
 
                 <?= $form->field($model, 'file', [
                     'options' => [

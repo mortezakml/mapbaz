@@ -50,4 +50,10 @@ class Type extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Ads::className(), ['type_id' => 'id']);
     }
+    
+    
+    public static function findByName($name)
+    {
+        return static::find()->where(['name' => $name])->one();
+    }
 }
