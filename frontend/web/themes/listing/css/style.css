@@ -1547,7 +1547,7 @@ a:focus {
 .listing-single .tabs .tab-link:hover .link-top{height:2px; width:100%;opacity:1;}
 .listing-single .tabs .tab-link.current .link-top{height:2px; width:100%;opacity:1;}
 .listing-single .tab-content{display:none;padding:30px;background:#fff;}
-.tab-content h5{text-align:left;letter-spacing:2px;}
+.tab-content h5{text-align:right;letter-spacing:2px;}
 .tab-content p{text-align:left;margin-top:20px;}
 .tab-content.current{display: inherit;}
 		
@@ -1564,7 +1564,7 @@ a:focus {
 
 .listing-owner-section{padding:30px; background:#fff;}
 .listing-owner-section-title{}
-.listing-owner-section-title h5{letter-spacing:2px;font-weight:400;text-align:left;}
+.listing-owner-section-title h5{letter-spacing:2px;font-weight:400;text-align:right;}
 .listing-owner-wrapper{padding:15px;background:#f7fbfc;margin-top:30px;border-radius:4px;}
 .listing-owner-figure{width:200px;}
 .listing-owner-content{width:570px;padding-left:20px;padding-top:30px;margin:-5px 0;position:relative;}
@@ -1579,7 +1579,7 @@ a:focus {
 
 .listing-feature-section{padding:34px 30px 10px; margin-bottom:30px;}
 .listing-feature-section-title{}
-.listing-feature-section-title h5{text-align:left;}
+.listing-feature-section-title h5{text-align:right;}
 .listing-feature-wrapper{margin-top:23px;}
 .feature-field{border-radius:4px;padding:12px 15px 12px; margin-bottom:30px;}
 .feature-field i{display:inline-block;margin-right:15px;width:26px;height:26px;line-height:26px;border-radius:50%;font-size:12px;text-align:center;}
@@ -1588,7 +1588,7 @@ a:focus {
 /* single listing feature section*/
 .listing-video-section{padding:34px 30px 40px; margin-bottom:30px;}
 .listing-video-section-title{}
-.listing-video-section-title h5{text-align:left;}
+.listing-video-section-title h5{text-align:right;}
 .listing-video-wrapper{margin-top:23px;}
 .video{position:relative;}
 .video-btn {

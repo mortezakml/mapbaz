@@ -71,10 +71,11 @@ $this->title = "جزییات تبلیغ";
                         </div>
 
                         <div class="listing-contact-detail-wrap">
-                            <?php $profile = isset(Yii::$app->user->identity->profile) ? Yii::$app->user->identity->profile: null ?>
                             <div class="listing-contact-section-title">
                                 <h5>تماس</h5>
                             </div>
+                            <?php if($profile = isset(Yii::$app->user->identity->profile) ? Yii::$app->user->identity->profile: null){ ?>
+                            
                             <div class="listing-contact-section-table">
                                 <div class="listing-contact-table-field">
                                     <ul>
@@ -128,6 +129,12 @@ $this->title = "جزییات تبلیغ";
                                     </ul>
                                 </div>
                             </div>
+                            <?php 
+                            }
+                            else{
+                                echo "<p>اطلاعاتی وجود ندارد</p>";
+                            }
+                            ?>
                         </div>
 
                         <div class="listing-feature-section">
@@ -194,7 +201,7 @@ $this->title = "جزییات تبلیغ";
 
                         <div class="listing-video-section bgwhite">
                             <div class="listing-video-section-title">
-                                <h5>VIDEO</h5>
+                                <h5>ویدیو</h5>
                             </div>
                             <div class="listing-video-wrapper clearfix">  
                                 <div class="video">
@@ -208,7 +215,7 @@ $this->title = "جزییات تبلیغ";
 
                         <div class="listing-owner-section">
                             <div class="listing-owner-section-title">
-                                <h5>owner information</h5>
+                                <h5>اطلاعات مجری</h5>
                             </div>
                             <div class="listing-owner-wrapper clearfix">
                                 <div class="listing-owner-figure pull-left">

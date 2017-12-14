@@ -236,7 +236,7 @@ $theme_url = Yii::$app->assetManager->getBundle(frontend\assets\MainAsset::class
         </div><!-- section title end -->
     </div><!-- section container end -->
     <div class="container-fluid"><!-- section container -->
-        <div class="feature-wrap">
+        <div class="feature-wrap" style="direction: ltr;">
             <ul class="feature-slider clearfix">
                 <li class="item"><!-- .ITEM -->
                     <div class="feature-item">

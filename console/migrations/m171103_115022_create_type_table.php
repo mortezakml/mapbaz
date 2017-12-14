@@ -19,9 +19,8 @@ class m171103_115022_create_type_table extends Migration
         ]);
         
         $this->batchInsert($this->tableName, ['name'], [
-            ['تصویری'],
-            ['انیمیشن'],
-            ['متن']
+            ['وب سایت'],
+            ['تلگرام'],
         ]);
     }
 

@@ -17,6 +17,7 @@ class m171104_160433_create_ads_table extends Migration
             'id' => $this->primaryKey(),
             'title' => $this->string(50)->notNull(),
             'description' => $this->text()->notNull(),
+            'url' => $this->string(50)->notNull(),
             'image' => $this->string(100),
             'star' => $this->string(5),
             'rate' => $this->string(20),
@@ -25,10 +26,13 @@ class m171104_160433_create_ads_table extends Migration
             'created_at' => $this->string(30), 
             'updated_at' => $this->string(30),
             'user_id' => $this->integer(),
+            'type_id' => $this->integer(),
         ]);
         $this->createIndex('idx_ads_user_id', $this->tableName, 'user_id');
+        $this->createIndex('idx_ads_type_id', $this->tableName, 'type_id');
         
         $this->addForeignKey('fk_ads_user_id', $this->tableName, 'user_id', 'user', 'id');
+        $this->addForeignKey('fk_ads_type_id', $this->tableName, 'type_id', 'type', 'id');
     }
 
     /**

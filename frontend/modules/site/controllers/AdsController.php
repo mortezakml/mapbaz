@@ -10,25 +10,7 @@ use yii\filters\AccessControl;
  */
 class AdsController extends \yii\web\Controller{
     
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['ads-detail'],
-                'rules' => [
-                    [
-                        'actions' => ['ads-detail'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-        ];
-    }
+
     
     public function actionAdsDetail($aid)
     {
