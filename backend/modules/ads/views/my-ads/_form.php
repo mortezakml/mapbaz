@@ -41,10 +41,18 @@ use kartik\widgets\FileInput;
                     ]
                 ])->widget(FileInput::className()); ?>
 
-
+                <?php if(!$model->isNewRecord): ?>
                 <?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
-
                 
+                <?= $form->field($model, 'category')->widget(\kartik\widgets\Select2::className(), [
+                    'options' => ['prompt' => '--select-item--', 'multiple' => true],
+                    'data' => $categoryItems,
+                    'pluginOptions' => [
+                        'tags' => true,
+
+                    ],
+                ]); ?>
+                <?php endif; ?> 
             </div>
             <div class="box-footer clearfix">
                 <div class="form-group">

@@ -1,6 +1,6 @@
 <?php 
 use yii\widgets\ActiveForm;
-
+use kartik\widgets\SwitchInput;
 ?>
 <div class="row animated bounceInDown">
     <div class="col-lg-12 col-md-12">
@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
         'prompt' => '-- انتخاب آیتم --'
     ]); ?>
     
-    <?= $form->field($entityForm, 'status'); ?>
+    <?= $form->field($entityForm, 'status')->widget(\kartik\switchinput\SwitchInput::className()); ?>
 
     <?= $form->field($entityForm, 'data')->fileInput(); ?>
 <?php ActiveForm::end(); ?>

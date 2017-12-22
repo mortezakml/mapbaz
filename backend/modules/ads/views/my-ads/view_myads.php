@@ -16,9 +16,10 @@ $this->title = "نمایش جزییات تبلیغ";
                 </div>
                 <!-- /. tools -->
             </div>
-            <div class="box-body" style="height: 590px;">
+            <div class="box-body" style="height: 500px;">
                 <?php Pjax::begin(['id' => 'detail-pjax', 'linkSelector' => '.link-pjax', 'enablePushState' => false, 'timeout' => false]); ?>
-                
+                <p><center><img src="<?= Yii::$app->utility->getImageDirectoryUser($adsModel->image); ?>" class="img-responsive" alt="<?= $adsModel->title ?>"></center></p>
+                <p><label>توضیحات : </label> <?= $adsModel->description ?></p>
                 <?php Pjax::end(); ?>
             </div>
             <div class="box-footer clearfix">
@@ -41,11 +42,11 @@ $this->title = "نمایش جزییات تبلیغ";
             </div>
             <div class="box-body">
                 <p><label>عنوان : </label> <?= $adsModel->title ?></p>
-                <p><img src="<?= Yii::$app->utility->getImageDirectoryUser($adsModel->image) ?>" class="img-responsive" alt="<?= $adsModel->title ?>"></p>
+                
                 <div style="background: #72b572; padding: 5px;border: 1px solid green;">
                     <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['ads/code/view-entity-code', 'aid' => $adsModel->id]); ?>" style="color:#fff;" class="link-pjax"><i class="fa fa-code"></i> دریافت کد</a>
                 </div>
-                <p><label>توضیحات : </label> <?= $adsModel->description ?></p>
+                
                 <p>
                     <label>دسته بندی  : </label>
                     <?php foreach($adsModel->adsCategories as $adscategory): ?>

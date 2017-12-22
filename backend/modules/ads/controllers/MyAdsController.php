@@ -7,6 +7,7 @@ use backend\modules\ads\models\Ads;
 use backend\modules\ads\models\Type;
 use backend\modules\ads\models\Plan;
 use yii\helpers\ArrayHelper;
+use backend\modules\ads\models\Category;
 /**
  * Description of MyAdsController
  *
@@ -63,10 +64,16 @@ class MyAdsController extends \yii\web\Controller{
         $model = Ads::findOne($aid);
         if ($model->load(Yii::$app->request->post())) 
         {
-            $model->saveAds();
+            if($model->saveAds())
+            {
+                $model->addCategory();
+            }
         }
-        return $this->renderAjax('new_ads', [
+        
+        $categoryItems = ArrayHelper::map(Category::find()->asArray()->all(), 'id', 'name');
+        return $this->renderAjax('edit_myads', [
             'model' => $model,
+            'categoryItems' => $categoryItems,
         ]);
         
     }

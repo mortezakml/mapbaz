@@ -4,7 +4,7 @@ namespace backend\modules\ads\controllers;
 use Yii;
 use backend\modules\ads\models\Ads;
 use backend\modules\ads\models\Entity;
-use backend\modules\ads\models\Type;
+use backend\modules\ads\models\EntityType;
 use backend\modules\ads\models\EntityForm;
 /**
  * Description of CodeController
@@ -22,7 +22,7 @@ class CodeController extends \yii\web\Controller{
         }
         $entityForm = new EntityForm();
         
-        $typeItems = \yii\helpers\ArrayHelper::map(Type::find()->asArray()->all(), 'id', 'name');
+        $typeItems = \yii\helpers\ArrayHelper::map(EntityType::find()->asArray()->all(), 'id', 'name');
         return $this->renderAjax('generate_code', [
             'entityForm' => $entityForm,
             'typeItems' => $typeItems

@@ -32,4 +32,11 @@ class EntityForm extends \yii\base\Model{
         
     }
     
+    
+    public function attributeLabels() {
+        return [
+            'type' => 'نوع تبلیغ من'
+        ];
+    }
+    
 }

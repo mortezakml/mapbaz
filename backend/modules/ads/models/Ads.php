@@ -29,6 +29,7 @@ class Ads extends \yii\db\ActiveRecord
 {
     public $file;
     
+    private $_category;
     /**
      * @inheritdoc
      */
@@ -52,7 +53,7 @@ class Ads extends \yii\db\ActiveRecord
             [['rate'], 'string', 'max' => 20],
             [['created_at', 'updated_at'], 'string', 'max' => 30],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
-            
+            ['category', 'safe'],
         ];
     }
 
@@ -74,6 +75,7 @@ class Ads extends \yii\db\ActiveRecord
             'created_at' => 'زمان ایجاد',
             'updated_at' => 'زمان ویرایش',
             'user_id' => 'شناسه کاربر',
+            'category' => 'دسته بندی'
         ];
     }
     
@@ -144,10 +146,70 @@ class Ads extends \yii\db\ActiveRecord
            $res = strpos($this->url, '@');
            if($res === false)
            {
-               $this->addError("url", "َشناسه تلگرامی باید معتبر باشد");
+               $this->addError("url", "َشناسه باید معتبر باشد");
                return false;
            }
         }
         return $this->save();
+    }
+    
+    
+    public function addCategory()
+    {
+        if(is_array($this->_category))
+        {
+            $this->refresh();
+            $transaction = Yii::$app->db->beginTransaction();
+            foreach ($this->_category as $key => $cat) {
+                $exists = AdsCategory::find()->where(['category_id' => $cat, 'ads_id' => $this->id])->exists();
+                if(!$exists)
+                {
+                    $adscategoryModel = new AdsCategory();
+                    $adscategoryModel->category_id = $cat;
+                    $adscategoryModel->ads_id = $this->id;
+                    if(!$adscategoryModel->save())
+                    {
+                        $transaction->rollBack();
+                        return false;
+                    }
+                }
+            }
+            
+            $adsCategoryArray = AdsCategory::find()->where(['ads_id' => $this->id])->asArray()->all(); 
+            for($i = 0; $i<count($adsCategoryArray); $i++)
+            {
+                if(!in_array($adsCategoryArray[$i]['category_id'], $this->_category))
+                {   
+                    $cid = $adsCategoryArray[$i]['category_id'];
+                    AdsCategory::deleteAll("ads_id=$this->id and category_id=$cid");
+                }
+            }
+            
+                    
+                    
+            $transaction->commit();
+            return true;
+        }
+        else{
+            AdsCategory::deleteAll("ads_id =$this->id");
+        }
+    }
+    
+    public function getCategory()
+    {
+        if(!Yii::$app->request->post())
+        {
+            $categoryModel =  null;
+            $adsCategoryArray = AdsCategory::find()->where(['ads_id' => $this->id])->asArray()->all();
+            $categoryModel = \yii\helpers\ArrayHelper::map($adsCategoryArray, 'category_id', 'category_id');
+            return $categoryModel;
+        }
+        return $this->_category;
+    }
+    
+    
+    public function setCategory($val)
+    {
+        $this->_category = $val;
     }
 }
